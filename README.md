@@ -22,6 +22,13 @@ This plugin is simply a way to accumulate data and expose via the WordPress REST
 composer i
 ```
 
+## Deployment
+
+```sh
+# update translations
+wp i18n make-pot . languages/relay.pot --include="includes"
+```
+
 ## Documentation
 
 View the [documentation](https://docs.verdant.studio/relay/) for more information.
