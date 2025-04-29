@@ -39,6 +39,10 @@ function relay_rest_core(): WP_REST_Response
 		'updates_available' => relay_get_amount_of_plugin_updates(),
 	);
 
+	if ( is_multisite() ) {
+		$data['multisite'] = true;
+	}
+
 	return new \WP_REST_Response( $data, 200 );
 }
 
