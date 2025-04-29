@@ -1,0 +1,18 @@
+{
+  "name": "verdantstudio/relay",
+  "description": "A secure bridge between your WordPress site's internals and your monitoring tools",
+  "type": "wordpress-plugin",
+  "scripts": {
+    "phpcs": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+    "phpcbf": "phpcbf"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-coding-standards/wpcs": "^3.0"
+  }
+}

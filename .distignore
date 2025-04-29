@@ -1,0 +1,16 @@
+\*.map
+.distignore
+.DS_Store
+.editorconfig
+.git
+.github
+.gitignore
+.idea
+.vscode
+.wordpress-org
+
+/vendor
+composer.json
+composer.lock
+phpcs.xml
+README.md
