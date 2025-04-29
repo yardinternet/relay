@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function relay_activation(): void
 {
-
 }
 
 /**
@@ -28,5 +27,4 @@ function relay_activation(): void
  */
 function relay_deactivation(): void
 {
-
 }

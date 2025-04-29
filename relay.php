@@ -19,7 +19,7 @@
  * Exit when accessed directly.
  */
 if ( ! defined( 'ABSPATH' )) {
-    exit;
+	exit;
 }
 
 /**
@@ -33,11 +33,11 @@ define( 'RELAY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
  * Initialize the plugin.
  *
  * @since 1.0.0
-*/
+ */
 function relay_plugin_init(): void {
 	relay_activation();
 
-    require_once RELAY_PLUGIN_PATH . '/includes/relay-data.php';
+	require_once RELAY_PLUGIN_PATH . '/includes/relay-data.php';
 }
 
 require_once RELAY_PLUGIN_PATH . '/includes/relay-api.php';

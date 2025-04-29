@@ -8,7 +8,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 /**
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 function relay_get_site_name(): ?string {
-    return get_bloginfo( 'name' ) ?? __( 'N/A', 'relay' );
+	return get_bloginfo( 'name' ) ?? __( 'N/A', 'relay' );
 }
 
 /**
@@ -26,7 +26,7 @@ function relay_get_site_name(): ?string {
  * @since 1.0.0
  */
 function relay_get_site_url(): ?string {
-    return get_bloginfo( 'url' ) ?? __( 'N/A', 'relay' );
+	return get_bloginfo( 'url' ) ?? __( 'N/A', 'relay' );
 }
 
 /**
@@ -35,7 +35,7 @@ function relay_get_site_url(): ?string {
  * @since 1.0.0
  */
 function relay_get_current_wp_version(): ?string {
-    return get_bloginfo( 'version' ) ?? __( 'N/A', 'relay' );
+	return get_bloginfo( 'version' ) ?? __( 'N/A', 'relay' );
 }
 
 /**
@@ -44,30 +44,30 @@ function relay_get_current_wp_version(): ?string {
  * @since 1.0.0
  */
 function relay_get_site_health_rating(): int {
-    $summary = get_transient( 'health-check-site-status-result' );
+	$summary = get_transient( 'health-check-site-status-result' );
 
-    if ( false === $summary ) {
-        return 0;
-    }
+	if ( false === $summary ) {
+		return 0;
+	}
 
-    $summary = json_decode( $summary, true );
+	$summary = json_decode( $summary, true );
 
-    if ( is_array( $summary ) ) {
-        $good        = $summary['good'] ?? 0;
-        $recommended = $summary['recommended'] ?? 0;
-        $critical    = $summary['critical'] ?? 0;
+	if ( is_array( $summary ) ) {
+		$good        = $summary['good'] ?? 0;
+		$recommended = $summary['recommended'] ?? 0;
+		$critical    = $summary['critical'] ?? 0;
 
-        $total = $good + $recommended + $critical;
+		$total = $good + $recommended + $critical;
 
-        if ( 0 === $total ) {
-            return 0;
-        }
+		if ( 0 === $total ) {
+			return 0;
+		}
 
-        $rating = ( 5 * $good + 3 * $recommended + 1 * $critical ) / $total;
-        return (int) round( $rating );
-    }
+		$rating = ( 5 * $good + 3 * $recommended + 1 * $critical ) / $total;
+		return (int) round( $rating );
+	}
 
-    return 0;
+	return 0;
 }
 
 /**
@@ -76,20 +76,20 @@ function relay_get_site_health_rating(): int {
  * @since 1.0.0
  */
 function relay_get_amount_of_plugin_updates(): int {
-    if ( ! function_exists( 'wp_update_plugins' ) ) {
-        require_once ABSPATH . WPINC . '/update.php';
-    }
+	if ( ! function_exists( 'wp_update_plugins' ) ) {
+		require_once ABSPATH . WPINC . '/update.php';
+	}
 
-    wp_update_plugins();
-    $update_plugins = get_site_transient( 'update_plugins' );
+	wp_update_plugins();
+	$update_plugins = get_site_transient( 'update_plugins' );
 
-    $count_outdated = 0;
+	$count_outdated = 0;
 
-    if ( isset( $update_plugins->response ) ) {
-        foreach ( $update_plugins->response as $update_plugin ) {
-            ++$count_outdated;
-        }
-    }
+	if ( isset( $update_plugins->response ) ) {
+		foreach ( $update_plugins->response as $update_plugin ) {
+			++$count_outdated;
+		}
+	}
 
-    return $count_outdated;
+	return $count_outdated;
 }
