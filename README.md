@@ -4,7 +4,7 @@
 
 ## About
 
-This plugin is simply a way to accumulate data and expose via the WordPress REST API. Which can then be consumed by our [Hub](http://github.com/verdant-studio/hub) or by your own monitoring tools.
+The plugin is designed to be used with our [Hub](https://www.verdant.studio/documentation/hub/) or any other monitoring tool that can consume the data exposed by the plugin.
 
 ## Features
 
