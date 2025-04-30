@@ -1,0 +1,32 @@
+name: Build release zip
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: Build release zip
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+          tools: composer
+
+      - name: Install dependencies and wrap them
+        run: composer install
+
+      - name: Remove dev dependencies and optimize autoloader
+        run: composer update --no-dev --no-scripts --optimize-autoloader
+
+      - name: Install Subversion
+        run: sudo apt-get install -y subversion
+
+      - name: Generate zip
+        uses: 10up/action-wordpress-plugin-build-zip@stable
+        with:
+          retention-days: 1
