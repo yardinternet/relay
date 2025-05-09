@@ -34,6 +34,6 @@ You can find the [documentation](https://www.verdant.studio/documentation/relay/
 
 == Changelog ==
 
-= 1.0.0: Apr 30, 2025 =
+= 1.0.0: May 9, 2025 =
 
 * Initial release

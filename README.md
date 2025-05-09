@@ -6,10 +6,6 @@
 
 The plugin is designed to be used with [Hub](https://github.com/verdant-studio/hub) or any other monitoring tool that can consume the data exposed by the plugin.
 
-## Features
-
-- [] TODO
-
 ## Requirements
 
 - PHP >7.4
