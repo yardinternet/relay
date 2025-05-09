@@ -14,8 +14,6 @@ A secure bridge between your WordPress site's internals and your monitoring tool
 
 == Description ==
 
-= WordPress Advent Calendar Plugin =
-
 The plugin is designed to be used with our [Hub](https://www.verdant.studio/documentation/hub/) or any other monitoring tool that can consume the data exposed by the plugin.
 
 == Documentation ==
