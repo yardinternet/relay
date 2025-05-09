@@ -31,7 +31,6 @@ jobs:
         with:
           generate-zip: true
         env:
-          SLUG: yunits-for-wp
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
 
