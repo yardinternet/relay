@@ -46,6 +46,10 @@ function relay_rest_core(): WP_REST_Response
 		$data['subsites'] = array();
 
 		foreach ( $subsites as $subsite ) {
+			if ( get_main_site_id() === (int) $subsite->blog_id ) {
+				continue;
+			}
+
 			$data['subsites'][] = array(
 				'site_id'   => $subsite->blog_id,
 				'site_url'  => get_site_url( $subsite->blog_id ),
