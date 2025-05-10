@@ -41,6 +41,19 @@ function relay_rest_core(): WP_REST_Response
 
 	if ( is_multisite() ) {
 		$data['multisite'] = true;
+
+		$subsites         = get_sites();
+		$data['subsites'] = array();
+
+		foreach ( $subsites as $subsite ) {
+			$data['subsites'][] = array(
+				'site_id'   => $subsite->blog_id,
+				'site_url'  => get_site_url( $subsite->blog_id ),
+				'site_name' => get_blog_option( $subsite->blog_id, 'blogname' ),
+			);
+		}
+	} else {
+		$data['multisite'] = false;
 	}
 
 	return new \WP_REST_Response( $data, 200 );
