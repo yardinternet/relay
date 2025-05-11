@@ -16,6 +16,15 @@ A secure bridge between your WordPress site's internals and your monitoring tool
 
 The plugin is designed to be used with our [Hub](https://www.verdant.studio/documentation/hub/) or any other monitoring tool that can consume the data exposed by the plugin.
 
+== Features ==
+
+* Site name
+* Site URL
+* WordPress version
+* Health rating
+* Updates available
+* Multisite and subsite information
+
 == Documentation ==
 
 You can find the [documentation](https://www.verdant.studio/documentation/relay/) on our site.
