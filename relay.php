@@ -6,7 +6,7 @@
  * Plugin Name: Relay
  * Plugin URI: https://www.verdant.studio/plugins/relay
  * Description: A secure bridge between your WordPress site's internals and your monitoring tools.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Verdant Studio
  * Author URI: https://www.verdant.studio
  * License: GPLv2 or later
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' )) {
 /**
  * Constants.
  */
-const RELAY_PLUGIN_VERSION = '1.0.0';
+const RELAY_PLUGIN_VERSION = '1.1.0';
 
 define( 'RELAY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
