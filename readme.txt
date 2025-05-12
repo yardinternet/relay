@@ -27,7 +27,7 @@ The plugin is designed to be used with our [Hub](https://www.verdant.studio/docu
 
 == Documentation ==
 
-You can find the [documentation](https://www.verdant.studio/documentation/relay/) on our site.
+You can find the [documentation](https://docs.verdant.studio/relay/) on our site.
 
 == Installation ==
 
