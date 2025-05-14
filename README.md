@@ -1,10 +1,10 @@
 # Relay
 
-> A secure bridge between your WordPress site's internals and your monitoring tools.
+> A bridge between your WordPress site’s internals and your monitoring tools.
 
 ## About
 
-The plugin is designed to be used with [Hub](https://github.com/verdant-studio/hub) or any other monitoring tool that can consume the data exposed by the plugin.
+This general-purpose plugin provides safe, structured access to internal data, making it compatible with [Hub](https://www.verdant.studio/applications/hub/) and other monitoring solutions.
 
 ## Requirements
 
