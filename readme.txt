@@ -7,7 +7,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 6.6
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -24,6 +24,7 @@ This general-purpose plugin provides safe, structured access to internal data, m
 * WordPress version
 * Health rating
 * Updates available
+* Directory sizes
 * Multisite and subsite information
 
 == Documentation ==
@@ -41,6 +42,11 @@ You can find the [documentation](https://docs.verdant.studio/relay/) on our site
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+= 1.2.0: Jun 5, 2025 =
+
+* Add: info about directory sizes to the api
+* Change: code improvements
 
 = 1.1.0: May 11, 2025 =
 
