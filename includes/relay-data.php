@@ -83,15 +83,7 @@ function relay_get_amount_of_plugin_updates(): int {
 	wp_update_plugins();
 	$update_plugins = get_site_transient( 'update_plugins' );
 
-	$count_outdated = 0;
-
-	if ( isset( $update_plugins->response ) ) {
-		foreach ( $update_plugins->response as $update_plugin ) {
-			++$count_outdated;
-		}
-	}
-
-	return $count_outdated;
+	return isset( $update_plugins->response ) ? count( $update_plugins->response ) : 0;
 }
 
 /**
