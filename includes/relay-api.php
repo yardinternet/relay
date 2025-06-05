@@ -39,6 +39,47 @@ function relay_rest_core(): WP_REST_Response
 		'updates_available' => relay_get_amount_of_plugin_updates(),
 	);
 
+	if ( ! class_exists( 'WP_Debug_Data' )) {
+		require_once ABSPATH . 'wp-admin/includes/class-wp-debug-data.php';
+	}
+
+	if ( class_exists( 'WP_Debug_Data' ) ) {
+		$sizes_data = \WP_Debug_Data::get_sizes();
+		$all_sizes  = array();
+
+		foreach ( $sizes_data as $name => $value ) {
+			$name = sanitize_text_field( $name );
+			$data_entry = array();
+
+			if ( isset( $value['size'] ) ) {
+				$data_entry['size'] = is_string( $value['size'] )
+					? sanitize_text_field( $value['size'] )
+					: (int) $value['size'];
+			}
+
+			if ( isset( $value['debug'] ) ) {
+				$data_entry['debug'] = is_string( $value['debug'] )
+					? sanitize_text_field( $value['debug'] )
+					: (int) $value['debug'];
+			}
+
+			if ( ! empty( $value['raw'] ) ) {
+				$data_entry['raw'] = (int) $value['raw'];
+			}
+
+			$all_sizes[ $name ] = $data_entry;
+		}
+
+		$data['directory_sizes'] = $all_sizes;
+	} else {
+		$data['directory_sizes'] = array(
+			'wp_content' => 0,
+			'uploads'    => 0,
+			'themes'     => 0,
+			'plugins'    => 0,
+		);
+	}
+
 	if ( is_multisite() ) {
 		$data['multisite'] = true;
 
