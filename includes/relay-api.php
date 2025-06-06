@@ -18,10 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return WP_Error|bool
  */
-function relay_permission_check()
-{
-	if ( ! current_user_can( 'manage_options' )) {
-		return new \WP_Error( 'rest_forbidden', esc_html__( 'You do not have permissions to manage options.', 'relay' ), array( 'status' => 401 ) );
+function relay_permission_check() {
+	$api_key    = get_option( 'relay_api_key', '' );
+	$header_key = isset( $_SERVER['HTTP_X_RELAY_API_KEY'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_RELAY_API_KEY'] ) ) : '';
+
+	if ( empty( $api_key ) || $header_key !== $api_key ) {
+		return new \WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key.', 'relay' ), array( 'status' => 401 ) );
 	}
 
 	return true;
