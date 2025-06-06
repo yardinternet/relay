@@ -40,4 +40,5 @@ function relay_plugin_init(): void {
 	require_once RELAY_PLUGIN_PATH . '/includes/relay-data.php';
 }
 
+require_once RELAY_PLUGIN_PATH . '/includes/relay-settings.php';
 require_once RELAY_PLUGIN_PATH . '/includes/relay-api.php';
