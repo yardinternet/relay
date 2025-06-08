@@ -92,8 +92,20 @@ function relay_render_api_key_field(): void {
 	<button type="button" id="generate_api_key" class="button"><?php esc_html_e( 'Generate API Key', 'relay' ); ?></button>
 	<p class="description"><?php esc_html_e( 'Enter or generate the API key used for authenticating REST API requests.', 'relay' ); ?></p>
 	<script>
+		function createRandomString(length) {
+			const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			let result = '';
+			const randomArray = new Uint8Array(length);
+			crypto.getRandomValues(randomArray);
+			randomArray.forEach((number) => {
+				result += chars[number % chars.length];
+			});
+			return result;
+		}
+
 		document.getElementById('generate_api_key').addEventListener('click', function() {
-			document.getElementById('relay_api_key').value = Math.random().toString(36).substr(2, 16);
+			const length = 16;
+			document.getElementById('relay_api_key').value = createRandomString(length);
 		});
 	</script>
 	<?php
