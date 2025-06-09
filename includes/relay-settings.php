@@ -17,15 +17,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.3.0
  */
 function relay_register_settings_page(): void {
-	add_options_page(
+	$parent     = is_multisite() ? 'settings.php' : 'options-general.php';
+	$capability = is_multisite() ? 'manage_network_options' : 'manage_options';
+
+	add_submenu_page(
+		$parent,
 		esc_html__( 'Relay Settings', 'relay' ),
 		esc_html__( 'Relay', 'relay' ),
-		'manage_options',
+		$capability,
 		'relay-settings',
 		'relay_render_settings_page'
 	);
 }
-add_action( 'admin_menu', 'relay_register_settings_page' );
+add_action( is_multisite() ? 'network_admin_menu' : 'admin_menu', 'relay_register_settings_page' );
 
 /**
  * Render the settings page.
