@@ -7,7 +7,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 6.6
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -44,9 +44,13 @@ You can find the [documentation](https://docs.verdant.studio/relay/) on our site
 
 == Changelog ==
 
+= 1.3.1: Jun 10, 2025 =
+
+* Fix: use the correct option key on multisite installations
+
 = 1.3.0: Jun 10, 2025 =
 
-* Add: a settings page for inserting or generating an API key
+* Add: a settings page for inserting or generating an api key
 * Change: rely on the custom api key instead of WordPress capabilities for api access
 * Change: only allow plugin to be activated on the network of a multisite installation
 
