@@ -19,8 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return WP_Error|bool
  */
 function relay_permission_check() {
-	$api_key    = get_option( 'relay_api_key', '' );
-	$header_key = isset( $_SERVER['HTTP_X_RELAY_API_KEY'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_RELAY_API_KEY'] ) ) : '';
+	// On multisite, use site_option; otherwise, use option
+	$api_key = is_multisite()
+		? get_site_option( 'relay_api_key', '' )
+		: get_option( 'relay_api_key', '' );
+
+	$header_key = isset( $_SERVER['HTTP_X_RELAY_API_KEY'] )
+		? sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_RELAY_API_KEY'] ) )
+		: '';
 
 	if ( empty( $api_key ) || $header_key !== $api_key ) {
 		return new \WP_Error( 'rest_forbidden', esc_html__( 'Invalid API key.', 'relay' ), array( 'status' => 401 ) );
