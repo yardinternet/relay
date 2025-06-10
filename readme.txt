@@ -7,7 +7,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 6.6
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -36,12 +36,19 @@ You can find the [documentation](https://docs.verdant.studio/relay/) on our site
 1. Upload `relay` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. You can find the api endpoints at `/wp-json/relay/v1/`.
+4. For more detailed guidance, refer to the [documentation](https://docs.verdant.studio/relay/).
 
 == Screenshots ==
 
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+= 1.3.0: Jun 10, 2025 =
+
+* Add: a settings page for inserting or generating an API key
+* Change: rely on the custom api key instead of WordPress capabilities for api access
+* Change: only allow plugin to be activated on the network of a multisite installation
 
 = 1.2.0: Jun 5, 2025 =
 
