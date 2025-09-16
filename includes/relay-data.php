@@ -111,12 +111,6 @@ function relay_get_directory_sizes(): array {
 					: (int) $value['size'];
 			}
 
-			if (isset($value['debug'])) {
-				$data_entry['debug'] = is_string($value['debug'])
-					? sanitize_text_field($value['debug'])
-					: (int) $value['debug'];
-			}
-
 			if (!empty($value['raw'])) {
 				$data_entry['raw'] = (int) $value['raw'];
 			}
