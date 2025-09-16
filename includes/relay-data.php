@@ -92,44 +92,55 @@ function relay_get_amount_of_plugin_updates(): int {
  * @since 1.2.0
  */
 function relay_get_directory_sizes(): array {
-	if ( ! class_exists( 'WP_Debug_Data' ) ) {
+	// Try to get cached data first.
+	$cached = get_transient('relay_directory_sizes');
+	if ($cached !== false) {
+		return $cached;
+	}
+
+	if (!class_exists('WP_Debug_Data')) {
 		require_once ABSPATH . 'wp-admin/includes/class-wp-debug-data.php';
 	}
 
-	if ( class_exists( 'WP_Debug_Data' ) ) {
+	if (class_exists('WP_Debug_Data')) {
 		$sizes_data = WP_Debug_Data::get_sizes();
 		$all_sizes  = array();
 
-		foreach ( $sizes_data as $name => $value ) {
-			$name       = sanitize_text_field( $name );
+		foreach ($sizes_data as $name => $value) {
+			$name       = sanitize_text_field($name);
 			$data_entry = array();
 
-			if ( isset( $value['size'] ) ) {
-				$data_entry['size'] = is_string( $value['size'] )
-					? sanitize_text_field( $value['size'] )
+			if (isset($value['size'])) {
+				$data_entry['size'] = is_string($value['size'])
+					? sanitize_text_field($value['size'])
 					: (int) $value['size'];
 			}
 
-			if ( isset( $value['debug'] ) ) {
-				$data_entry['debug'] = is_string( $value['debug'] )
-					? sanitize_text_field( $value['debug'] )
+			if (isset($value['debug'])) {
+				$data_entry['debug'] = is_string($value['debug'])
+					? sanitize_text_field($value['debug'])
 					: (int) $value['debug'];
 			}
 
-			if ( ! empty( $value['raw'] ) ) {
+			if (!empty($value['raw'])) {
 				$data_entry['raw'] = (int) $value['raw'];
 			}
 
-			$all_sizes[ $name ] = $data_entry;
+			$all_sizes[$name] = $data_entry;
 		}
+
+		// Cache for 1 hour.
+		set_transient('relay_directory_sizes', $all_sizes, HOUR_IN_SECONDS);
 
 		return $all_sizes;
 	}
 
-	return array(
+	return [
 		'wp_content' => 0,
 		'uploads'    => 0,
 		'themes'     => 0,
 		'plugins'    => 0,
-	);
+	];
 }
+
+
