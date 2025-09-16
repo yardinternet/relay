@@ -76,14 +76,9 @@ function relay_get_site_health_rating(): int {
  * @since 1.0.0
  */
 function relay_get_amount_of_plugin_updates(): int {
-	if ( ! function_exists( 'wp_update_plugins' ) ) {
-		require_once ABSPATH . WPINC . '/update.php';
-	}
+	$update_plugins = get_site_transient('update_plugins');
 
-	wp_update_plugins();
-	$update_plugins = get_site_transient( 'update_plugins' );
-
-	return isset( $update_plugins->response ) ? count( $update_plugins->response ) : 0;
+	return isset($update_plugins->response) ? count($update_plugins->response) : 0;
 }
 
 /**
