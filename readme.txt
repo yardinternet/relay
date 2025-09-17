@@ -26,6 +26,7 @@ This general-purpose plugin provides safe, structured access to internal data, m
 * Updates available
 * Directory sizes
 * Multisite and subsite information
+* WP-CLI command to activate plugin and generate an API key
 
 == Documentation ==
 
