@@ -7,7 +7,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 6.6
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -48,6 +48,12 @@ You can find the [documentation](https://www.verdant.studio/plugins/relay/) on o
 You can find the documentation at: [verdant.studio/plugins/relay](https://www.verdant.studio/plugins/relay/ "Relay Documentation")
 
 == Changelog ==
+
+= 1.5.1: Sep 18, 2025 =
+
+* Change: remove WP-CLI command to activate (can use wp plugin activate instead)
+* Fix: WP-cli take multisite options into account
+* Fix: return warning if the api key is not present
 
 = 1.5.0: Sep 18, 2025 =
 
