@@ -7,7 +7,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 6.6
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -43,7 +43,15 @@ You can find the [documentation](https://docs.verdant.studio/relay/) on our site
 
 == Frequently Asked Questions ==
 
+= Where can I find the documentation? =
+
+You can find the documentation at: [verdant.studio/plugins/relay](https://www.verdant.studio/plugins/relay/ "Relay Documentation")
+
 == Changelog ==
+
+= 1.5.0: Sep 18, 2025 =
+
+* Add: WP-cli command to get the current api key
 
 = 1.4.0: Sep 18, 2025 =
 
