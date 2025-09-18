@@ -28,19 +28,43 @@ class Relay_CLI_Command
 	 * @subcommand activate
 	 */
 	public function activate() {
-		$plugin_file = plugin_basename( dirname( __DIR__ ) . '/relay.php' );
+		$plugin_file  = plugin_basename( dirname( __DIR__ ) . '/relay.php' );
+		$network_wide = is_multisite();
 
-		if ( is_plugin_active( $plugin_file ) ) {
-			WP_CLI::success( 'Relay plugin is already active.' );
+		$already_active = $network_wide
+			? is_plugin_active_for_network( $plugin_file )
+			: is_plugin_active( $plugin_file );
+
+		if ( $already_active ) {
+			WP_CLI::success(
+				$network_wide
+					? 'Relay plugin is already network active.'
+					: 'Relay plugin is already active.'
+			);
 			return;
 		}
 
-		activate_plugin( $plugin_file );
+		$result = activate_plugin( $plugin_file, '', $network_wide );
+		if ( is_wp_error( $result ) ) {
+			WP_CLI::error( $result->get_error_message() );
+		}
 
-		if ( is_plugin_active( $plugin_file ) ) {
-			WP_CLI::success( 'Relay plugin activated.' );
+		$now_active = $network_wide
+			? is_plugin_active_for_network( $plugin_file )
+			: is_plugin_active( $plugin_file );
+
+		if ( $now_active ) {
+			WP_CLI::success(
+				$network_wide
+					? 'Relay plugin network activated.'
+					: 'Relay plugin activated.'
+			);
 		} else {
-			WP_CLI::error( 'Failed to activate Relay plugin.' );
+			WP_CLI::error(
+				$network_wide
+					? 'Failed to network activate Relay plugin.'
+					: 'Failed to activate Relay plugin.'
+			);
 		}
 	}
 
@@ -58,17 +82,23 @@ class Relay_CLI_Command
 	 *
 	 * @subcommand generate-api-key
 	 */
-	public function generate_api_key( $args, $assoc_args ) {
+	public function generate_api_key( array $args, array $assoc_args ) {
 		$api_key = wp_generate_password( 32, false );
 
-		if ( ! update_option( 'relay_api_key', $api_key ) ) {
+		if ( is_multisite() ) {
+			$updated = update_site_option( 'relay_api_key', $api_key );
+		} else {
+			$updated = update_option( 'relay_api_key', $api_key );
+		}
+
+		if ( ! $updated ) {
 			WP_CLI::error( 'Failed to save API key.' );
 		}
 
 		if ( isset( $assoc_args['porcelain'] ) ) {
 			WP_CLI::line( $api_key );
 		} else {
-			WP_CLI::success( "API key generated: $api_key" );
+			WP_CLI::success( "New API key generated: $api_key" );
 		}
 	}
 
@@ -88,8 +118,12 @@ class Relay_CLI_Command
 	 *
 	 * @since 1.5.0
 	 */
-	public function get_api_key( $args, $assoc_args ) {
-		$api_key = get_option( 'relay_api_key' );
+	public function get_api_key( array $args, array $assoc_args ) {
+		if ( is_multisite() ) {
+			$api_key = get_site_option( 'relay_api_key' );
+		} else {
+			$api_key = get_option( 'relay_api_key' );
+		}
 
 		if ( ! $api_key ) {
 			WP_CLI::error( 'No API key found.' );
