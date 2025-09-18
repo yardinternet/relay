@@ -76,7 +76,7 @@ class Relay_CLI_Command
 		}
 
 		if ( ! $api_key ) {
-			WP_CLI::error( 'No API key found.' );
+			return WP_CLI::warning( 'No API key found.' );
 		}
 
 		if ( isset( $assoc_args['porcelain'] ) ) {
