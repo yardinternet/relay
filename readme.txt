@@ -7,7 +7,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 6.6
 Requires PHP: 7.4
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -44,6 +44,13 @@ You can find the [documentation](https://docs.verdant.studio/relay/) on our site
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+= 1.4.0: Sep 18, 2025 =
+
+* Add: apply 1 hour caching to directory sizes call
+* Add: a WP-CLI command to activate the plugin and generate an api key
+* Change: use the default WP transient for getting updates status
+* Change: remove debug info attribute from directory sizes call
 
 = 1.3.1: Jun 10, 2025 =
 
