@@ -71,4 +71,34 @@ class Relay_CLI_Command
 			WP_CLI::success( "API key generated: $api_key" );
 		}
 	}
+
+	/**
+	 * Retrieves the current API key.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--porcelain]
+	 * : Output only the API key.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp relay get-api-key
+	 *
+	 * @subcommand get-api-key
+	 *
+	 * @since 1.5.0
+	 */
+	public function get_api_key( $args, $assoc_args ) {
+		$api_key = get_option( 'relay_api_key' );
+
+		if ( ! $api_key ) {
+			WP_CLI::error( 'No API key found.' );
+		}
+
+		if ( isset( $assoc_args['porcelain'] ) ) {
+			WP_CLI::line( $api_key );
+		} else {
+			WP_CLI::success( "Current API key: $api_key" );
+		}
+	}
 }
