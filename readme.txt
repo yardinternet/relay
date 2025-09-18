@@ -30,14 +30,14 @@ This general-purpose plugin provides safe, structured access to internal data, m
 
 == Documentation ==
 
-You can find the [documentation](https://docs.verdant.studio/relay/) on our site.
+You can find the [documentation](https://www.verdant.studio/plugins/relay/) on our site.
 
 == Installation ==
 
 1. Upload `relay` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. You can find the api endpoints at `/wp-json/relay/v1/`.
-4. For more detailed guidance, refer to the [documentation](https://docs.verdant.studio/relay/).
+4. For more detailed guidance, refer to the [documentation](https://www.verdant.studio/plugins/relay/).
 
 == Screenshots ==
 
