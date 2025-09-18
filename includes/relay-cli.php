@@ -19,56 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Relay_CLI_Command
 {
 	/**
-	 * Activates the Relay plugin.
-	 *
-	 * ## EXAMPLES
-	 *
-	 *     wp relay activate
-	 *
-	 * @subcommand activate
-	 */
-	public function activate() {
-		$plugin_file  = plugin_basename( dirname( __DIR__ ) . '/relay.php' );
-		$network_wide = is_multisite();
-
-		$already_active = $network_wide
-			? is_plugin_active_for_network( $plugin_file )
-			: is_plugin_active( $plugin_file );
-
-		if ( $already_active ) {
-			WP_CLI::success(
-				$network_wide
-					? 'Relay plugin is already network active.'
-					: 'Relay plugin is already active.'
-			);
-			return;
-		}
-
-		$result = activate_plugin( $plugin_file, '', $network_wide );
-		if ( is_wp_error( $result ) ) {
-			WP_CLI::error( $result->get_error_message() );
-		}
-
-		$now_active = $network_wide
-			? is_plugin_active_for_network( $plugin_file )
-			: is_plugin_active( $plugin_file );
-
-		if ( $now_active ) {
-			WP_CLI::success(
-				$network_wide
-					? 'Relay plugin network activated.'
-					: 'Relay plugin activated.'
-			);
-		} else {
-			WP_CLI::error(
-				$network_wide
-					? 'Failed to network activate Relay plugin.'
-					: 'Failed to activate Relay plugin.'
-			);
-		}
-	}
-
-	/**
 	 * Generates and saves a new API key in the database.
 	 *
 	 * ## OPTIONS
