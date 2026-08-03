@@ -33,15 +33,15 @@ class Relay_CLI_Command
 	 * @subcommand generate-api-key
 	 */
 	public function generate_api_key( array $args, array $assoc_args ) {
-		$api_key = wp_generate_password( 32, false );
-
-		if ( is_multisite() ) {
-			$updated = update_site_option( 'relay_api_key', $api_key );
-		} else {
-			$updated = update_option( 'relay_api_key', $api_key );
+		$api_key = relay_get_api_key();
+		if ($api_key) {
+			WP_CLI::warning( "API key already exists: $api_key" );
+			return;
 		}
 
-		if ( ! $updated ) {
+		$api_key = relay_generate_api_key();
+
+		if ( ! $api_key ) {
 			WP_CLI::error( 'Failed to save API key.' );
 		}
 
@@ -69,11 +69,7 @@ class Relay_CLI_Command
 	 * @since 1.5.0
 	 */
 	public function get_api_key( array $args, array $assoc_args ) {
-		if ( is_multisite() ) {
-			$api_key = get_site_option( 'relay_api_key' );
-		} else {
-			$api_key = get_option( 'relay_api_key' );
-		}
+		$api_key = relay_get_api_key();
 
 		if ( ! $api_key ) {
 			return WP_CLI::warning( 'No API key found.' );

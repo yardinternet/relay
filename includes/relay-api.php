@@ -96,6 +96,29 @@ function relay_register_rest_routes(): void
 	}
 }
 
+function relay_generate_api_key(): string
+{
+	$api_key = wp_generate_password( 32, false );
+
+	if ( is_multisite() ) {
+		$updated = update_site_option( 'relay_api_key', $api_key );
+	} else {
+		$updated = update_option( 'relay_api_key', $api_key );
+	}
+
+	return false != $updated ? $api_key : $updated;
+}
+
+function relay_get_api_key(): string
+{
+	if ( is_multisite() ) {
+		$api_key = get_site_option( 'relay_api_key' );
+	} else {
+		$api_key = get_option( 'relay_api_key' );
+	}
+	return $api_key;
+}
+
 /**
  * Initialize the REST API routes.
  *
