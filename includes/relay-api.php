@@ -81,6 +81,7 @@ function relay_register_rest_routes(): void
 {
 	$endpoints = array(
 		'core',
+		'plugins',
 	);
 
 	foreach ( $endpoints as $endpoint ) {
@@ -102,3 +103,9 @@ function relay_register_rest_routes(): void
  * @since 1.0.0
  */
 add_action( 'rest_api_init', 'relay_register_rest_routes' );
+
+function relay_rest_plugins(): WP_REST_Response
+{
+	require_once RELAY_PLUGIN_PATH . '/includes/relay-data.php';
+	return new \WP_REST_Response( relay_get_plugins(), 200 );
+}
