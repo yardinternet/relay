@@ -132,3 +132,37 @@ function relay_get_directory_sizes(): array {
 		'plugins'    => 0,
 	);
 }
+
+function relay_get_plugins(): array
+{
+	if (!function_exists('get_plugins')) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	$update_data = get_site_transient('update_plugins');
+
+	$plugins = [];
+
+	foreach (get_plugins() as $plugin_file => $plugin_data) {
+		$is_network_active = is_plugin_active_for_network($plugin_file);
+		$is_active = is_plugin_active($plugin_file);
+		$update = isset($update_data->response) ? ($update_data->response[$plugin_file] ?? null) : null;
+		$slug = dirname($plugin_file);
+		if ('.' === $slug) {
+ 			$slug = pathinfo($plugin_file, PATHINFO_FILENAME);
+ 		}
+
+		$plugins[] = [
+			'slug' => $slug,
+			'file' => $plugin_file,
+			'name' => $plugin_data['Name'],
+			'version' => $plugin_data['Version'],
+			'active' => $is_active,
+			'network_active' => $is_network_active,
+			'update_available' => null !== $update,
+			'new_version' => $update->new_version ?? null,
+		];
+	}
+
+	return $plugins;
+}
