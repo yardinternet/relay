@@ -52,5 +52,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	WP_CLI::add_command( 'relay', 'Relay_CLI_Command' );
 }
 
+require_once RELAY_PLUGIN_PATH . '/includes/relay-extra.php';
 require_once RELAY_PLUGIN_PATH . '/includes/relay-settings.php';
 require_once RELAY_PLUGIN_PATH . '/includes/relay-api.php';

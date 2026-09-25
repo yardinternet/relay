@@ -69,6 +69,8 @@ function relay_rest_core(): WP_REST_Response
 		$data['multisite'] = false;
 	}
 
+	$data['extra'] = relay_get_extra_data( 'core' ) ?? null;
+
 	return new \WP_REST_Response( $data, 200 );
 }
 
