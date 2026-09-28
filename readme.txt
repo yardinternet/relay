@@ -28,6 +28,7 @@ This general-purpose plugin provides safe, structured access to internal data, m
 * Directory sizes
 * Multisite and subsite information
 * WP-CLI support
+* Consumer-supplied extra data (via filter or `wp option`)
 
 == Documentation ==
 
