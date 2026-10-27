@@ -1,13 +1,14 @@
 <?php
 /**
  * @package Relay
- * @author  Verdant Studio
+ * @author  Yard Internet
  *
  * Plugin Name: Relay
- * Plugin URI: https://www.verdant.studio/plugins/relay
+ * Plugin URI: https://github.com/yardinternet/relay
+ * Update URI: https://github.com/yardinternet/relay
  * Description: A secure bridge between your WordPress site's internals and your monitoring tools.
- * Version: 1.5.1
- * Author: Verdant Studio
+ * Version: 1.0.0
+ * Author: Yard Internet
  * Author URI: https://www.verdant.studio
  * License: GPLv2 or later
  * Text Domain: relay
@@ -26,7 +27,7 @@ if ( ! defined( 'ABSPATH' )) {
 /**
  * Constants.
  */
-const RELAY_PLUGIN_VERSION = '1.5.1';
+const RELAY_PLUGIN_VERSION = '1.0.0';
 
 define( 'RELAY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
