@@ -43,6 +43,7 @@ function relay_rest_core(): WP_REST_Response
 		'site_name'         => relay_get_site_name(),
 		'site_url'          => relay_get_site_url(),
 		'wp_version'        => relay_get_current_wp_version(),
+		'php_version'       => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . '.' . PHP_RELEASE_VERSION,
 		'health_rating'     => relay_get_site_health_rating(),
 		'updates_available' => relay_get_amount_of_plugin_updates(),
 		'directory_sizes'   => relay_get_directory_sizes(),
