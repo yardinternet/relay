@@ -3,8 +3,8 @@
  * Consumer supplied polling data.
  *
  * @package Relay
- * @author  Verdant Studio
- * @since   1.6.0
+ * @author  Yard Internet
+ * @since   1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  *     wp option update relay_extra_data '{"branch":"main"}' --format=json
  *
- * @since 1.6.0
+ * @since 1.0.0
  *
  * @param string $endpoint Endpoint the data is collected for.
  * @return array<string, scalar|array<scalar>>
@@ -39,7 +39,7 @@ function relay_get_extra_data( string $endpoint ): array {
 /**
  * Keep the payload to scalars and flat arrays of scalars.
  *
- * @since 1.6.0
+ * @since 1.0.0
  *
  * @param array<mixed> $data
  * @return array<string, scalar|array<scalar>>
@@ -67,7 +67,7 @@ function relay_sanitize_extra_data( array $data ): array {
 }
 
 /**
- * @since 1.6.0
+ * @since 1.0.0
  *
  * @param scalar $value
  * @return scalar
@@ -79,7 +79,7 @@ function relay_sanitize_extra_value( $value ) {
 /**
  * Expose the stored option so tooling without PHP access can supply data.
  *
- * @since 1.6.0
+ * @since 1.0.0
  *
  * @param array<mixed> $data
  * @return array<mixed>

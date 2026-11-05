@@ -4,7 +4,7 @@
  *
  * @package Relay
  * @author  Verdant Studio
- * @since   1.3.0
+ * @since   1.3.0 Versions in @since tags are upstream Relay's, not yard/relay's.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
