@@ -4,7 +4,7 @@
  *
  * @package Relay
  * @author  Verdant Studio
- * @since   1.0.0
+ * @since   1.0.0 Versions in @since tags are upstream Relay's, not yard/relay's.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -59,10 +59,15 @@ function relay_rest_core(): WP_REST_Response
 				continue;
 			}
 
+			switch_to_blog( (int) $subsite->blog_id );
+			$health_rating = relay_get_site_health_rating();
+			restore_current_blog();
+
 			$data['subsites'][] = array(
-				'site_id'   => $subsite->blog_id,
-				'site_url'  => get_site_url( $subsite->blog_id ),
-				'site_name' => get_blog_option( $subsite->blog_id, 'blogname' ),
+				'site_id'       => $subsite->blog_id,
+				'site_url'      => get_site_url( $subsite->blog_id ),
+				'site_name'     => get_blog_option( $subsite->blog_id, 'blogname' ),
+				'health_rating' => $health_rating,
 			);
 		}
 	} else {

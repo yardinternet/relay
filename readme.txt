@@ -1,13 +1,12 @@
 === Relay ===
-Author: Verdant Studio
-Author URI: https://www.verdant.studio
+Author: Yard Internet
+Author URI: https://www.yard.nl
 Contributors: verdantstudio
-Donate link: https://www.buymeacoffee.com/verdantstudio
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 6.6
+Requires at least: 5.2
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -50,6 +49,14 @@ You can find the [documentation](https://www.verdant.studio/plugins/relay/) on o
 You can find the documentation at: [verdant.studio/plugins/relay](https://www.verdant.studio/plugins/relay/ "Relay Documentation")
 
 == Changelog ==
+
+= 1.1.0: Nov 5, 2026 =
+
+* Add: per-subsite health rating in the core endpoint, so a network's subsites report their own figure
+* Change: Requires at least lowered from 6.6 to 5.2, the oldest WordPress the code actually needs
+* Fix: relay-extra.php credited to Yard Internet and numbered on this plugin's own scale
+
+Entries below this point are upstream Relay's, from before yard/relay restarted its numbering at 1.0.0.
 
 = 1.5.1: Sep 18, 2025 =
 

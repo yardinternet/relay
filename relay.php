@@ -3,17 +3,19 @@
  * @package Relay
  * @author  Yard Internet
  *
+ * Versions in @since tags are upstream Relay's, not yard/relay's.
+ *
  * Plugin Name: Relay
  * Plugin URI: https://github.com/yardinternet/relay
  * Update URI: https://github.com/yardinternet/relay
  * Description: A secure bridge between your WordPress site's internals and your monitoring tools.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Yard Internet
- * Author URI: https://www.verdant.studio
+ * Author URI: https://www.yard.nl
  * License: GPLv2 or later
  * Text Domain: relay
  * Domain Path: /languages
- * Requires at least: 6.6
+ * Requires at least: 5.2
  * Network: true
  */
 
