@@ -182,7 +182,7 @@ function relay_get_subsite_active_plugins(): array
 
 	$active = [];
 
-	foreach (get_sites(['number' => 0, 'fields' => 'ids']) as $blog_id) {
+	foreach (get_sites(['number' => 0, 'fields' => 'ids', 'network_id' => get_current_network_id()]) as $blog_id) {
 		if (get_main_site_id() === (int) $blog_id) {
 			continue;
 		}
