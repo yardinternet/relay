@@ -140,6 +140,7 @@ function relay_get_plugins(): array
 	}
 
 	$update_data = get_site_transient('update_plugins');
+	$subsite_plugins = relay_get_subsite_active_plugins();
 
 	$plugins = [];
 
@@ -159,10 +160,55 @@ function relay_get_plugins(): array
 			'version' => $plugin_data['Version'],
 			'active' => $is_active,
 			'network_active' => $is_network_active,
+			'active_sites' => $is_network_active ? [] : relay_get_sites_with_active_plugin($subsite_plugins, $plugin_file),
 			'update_available' => null !== $update,
 			'new_version' => $update->new_version ?? null,
 		];
 	}
 
 	return $plugins;
+}
+
+/**
+ * Active plugin files per subsite url, excluding the main site. Empty when not a multisite.
+ *
+ * @return array<string, string[]>
+ */
+function relay_get_subsite_active_plugins(): array
+{
+	if (!is_multisite()) {
+		return [];
+	}
+
+	$active = [];
+
+	foreach (get_sites(['number' => 0, 'fields' => 'ids']) as $blog_id) {
+		if (get_main_site_id() === (int) $blog_id) {
+			continue;
+		}
+
+		$active_plugins = get_blog_option((int) $blog_id, 'active_plugins', []);
+		$active[get_site_url((int) $blog_id)] = is_array($active_plugins) ? $active_plugins : [];
+	}
+
+	return $active;
+}
+
+/**
+ * Urls of the subsites that have the plugin activated on site level.
+ *
+ * @param array<string, string[]> $subsite_plugins
+ * @return string[]
+ */
+function relay_get_sites_with_active_plugin(array $subsite_plugins, string $plugin_file): array
+{
+	$sites = [];
+
+	foreach ($subsite_plugins as $url => $active_plugins) {
+		if (in_array($plugin_file, $active_plugins, true)) {
+			$sites[] = $url;
+		}
+	}
+
+	return $sites;
 }
