@@ -18,7 +18,7 @@ Registered under `relay/v1`, both requiring the `X-Relay-API-Key` header:
 | Endpoint | Returns |
 | --- | --- |
 | `/wp-json/relay/v1/core` | WordPress version, site health rating, plugin updates available, directory sizes, and for a multisite its subsites with each one's health rating |
-| `/wp-json/relay/v1/plugins` | Every installed plugin with its slug, version, active and network-active state, and whether an update is waiting |
+| `/wp-json/relay/v1/plugins` | Every installed plugin with its slug, version, active and network-active state, the subsites it is activated on, and whether an update is waiting |
 
 ## Requirements
 
