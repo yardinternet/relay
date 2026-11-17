@@ -66,7 +66,7 @@ function relay_rest_core(): WP_REST_Response
 
 			$data['subsites'][] = array(
 				'site_id'       => $subsite->blog_id,
-				'site_url'      => get_site_url( $subsite->blog_id ),
+				'site_url'      => get_home_url( $subsite->blog_id ),
 				'site_name'     => get_blog_option( $subsite->blog_id, 'blogname' ),
 				'health_rating' => $health_rating,
 			);
