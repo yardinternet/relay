@@ -9,7 +9,7 @@
  * Plugin URI: https://github.com/yardinternet/relay
  * Update URI: https://github.com/yardinternet/relay
  * Description: A secure bridge between your WordPress site's internals and your monitoring tools.
- * Version: 1.1.0
+ * Version: 1.3.1
  * Author: Yard Internet
  * Author URI: https://www.yard.nl
  * License: GPLv2 or later
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' )) {
 /**
  * Constants.
  */
-const RELAY_PLUGIN_VERSION = '1.0.0';
+const RELAY_PLUGIN_VERSION = '1.3.1';
 
 define( 'RELAY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
