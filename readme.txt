@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 5.2
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.3.1
 Tags: monitor, monitoring, api
 Tested up to: 6.8
 
@@ -49,6 +49,19 @@ You can find the [documentation](https://www.verdant.studio/plugins/relay/) on o
 You can find the documentation at: [verdant.studio/plugins/relay](https://www.verdant.studio/plugins/relay/ "Relay Documentation")
 
 == Changelog ==
+
+= 1.3.1: Nov 19, 2026 =
+
+* Fix: subsites' site_url in the core endpoint now uses get_home_url(), so it reports the site's public address instead of the WordPress install URL
+* Fix: plugin version header, RELAY_PLUGIN_VERSION and stable tag bumped; 1.2.0 and 1.3.0 still reported 1.1.0
+
+= 1.3.0: Nov 12, 2026 =
+
+* Add: expose the subsites a plugin is activated on
+
+= 1.2.0: Nov 9, 2026 =
+
+* Add: expose the PHP version in the core endpoint
 
 = 1.1.0: Nov 5, 2026 =
 
